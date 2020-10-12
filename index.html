@@ -1,0 +1,101 @@
+<html ng-app="tasklist">
+<head>
+	<meta charset="UTF-8">
+	<title>Lista Telefonica</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/listaTarefasCtrl.js"></script>
+</head>
+<body ng-controller="listaTarefasCtrl">
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2>{{cabecalho}}</h2>
+				</div>
+			</div>
+
+			<div class="row" ng-show="tarefas.length > 0">
+				<!--Divs de cabecalho de lista de tarefas-->
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-4">
+					<h3>Num. da Tarefa</h3>
+				</div>
+				<div class="col-sm-2">
+					<h3>Status</h3>
+				</div>
+				<div class="col-sm-4">
+					<h3>Titulo</h3>
+				</div>
+			</div>
+
+			<!--Divs de lista de tarefas-->
+			<div class="row"   ng-repeat="tarefa in tarefas">
+				<div class="col-sm-1">
+					<button style="padding-right: 10px;" type="button" class="btn btn-primary"  ng-click = "selecionar(tarefa)">Editar</button>
+				</div>
+				<div class="col-sm-1">
+					<button type="button" class="btn btn-danger" ng-click = "apagar(tarefa.id)">Apagar</button>
+				</div>
+				<div class="col-sm-4">	
+					{{tarefa.id}}
+				</div>
+				<div class="col-sm-2">
+					{{tarefa.selecionado}}
+				</div>
+				<div class="col-sm-4">
+					{{tarefa.titulo}}
+				</div>
+			</div>
+
+			<!--Divs de labeis de formulario de cadastro de tarefas-->
+			<div class="row" style="padding-top: 30px;">
+				<div class="col-sm-3" style="text-align: left" >
+					<span >Num. da Tarefa</span>
+				</div>
+				<div class="col-sm-3" style="text-align: left">
+					<span >Status</span>
+				</div>
+				<div class="col-sm-6" style="text-align: left">
+					<span >Titulo</span>
+				</div>
+				
+			</div>
+
+			<!--Divs de inputs de formulario de cadastro de tarefas-->
+			<div class="row">
+				<div class="col-sm-3">
+					<input class="form-control" type="text" ng-model="id" disabled style="width: 85%;"/>
+				</div>
+				
+				<div class="col-sm-3" style="text-align: left">
+					<label> {{statusDescricao}} <input type="checkbox" ng-model="status" ng-click = "isCheck()"></label>
+				</div>
+
+				<div class="col-sm-6">
+					<input class="form-control"  type="text" ng-model="titulo"/>
+				</div>
+			</div>
+			
+			
+			<!--Divs de botoes finais-->
+			<div class="row">
+				<div class="col-sm-6" style="text-align: left">
+					<button type="button" class="btn btn-info" ng-click = "atualizar()" ng-disabled="validarEntrada()">Alterar</button>
+					<button type="button" class="btn btn-info" ng-click = "salvar()" ng-disabled="validarEntrada()">Salvar</button>
+				</div>
+				<div class="col-sm-6">
+					
+				</div>
+			</div>
+
+		</div>
+	</div>	
+</body>
+</html>
+
