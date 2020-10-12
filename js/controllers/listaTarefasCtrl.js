@@ -5,7 +5,11 @@ angular.module("tasklist").controller("listaTarefasCtrl", function ($scope, $htt
 	$scope.id = 0;
 	$scope.titulo = "";
 	$scope.status = false;
-	var url = "http://localhost:8080/task";
+	//local
+	//var url = "http://localhost:8080/task";
+	
+	//local
+	 var url = "https://tasklistbbackend.herokuapp.com/task";
 
 
 	//Realizar tratamento para obter descricao de status.
@@ -37,7 +41,7 @@ angular.module("tasklist").controller("listaTarefasCtrl", function ($scope, $htt
 			alert("Aconteceu um problema: " + data + status);
 		});
 	};
-	carregarTask();
+	 carregarTask();
 	//Carregamento de variaveis.
 	$scope.selecionar = function (tarefa) {
 		$scope.id = tarefa.id;
